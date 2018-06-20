@@ -3,7 +3,6 @@ package codecheck;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class App {
 	public static void main(String[] args) {
@@ -32,11 +31,11 @@ public class App {
 			}
 		}
 
-		Stream<Integer[]> sort2 = add.stream()
-				.sorted((a, b) -> b[0].compareTo(a[0]));
+		List<Integer[]> add_s = add.stream()
+				.sorted((a, b) -> b[0].compareTo(a[0])).collect(Collectors.toList());
 
-		sort2.forEach(j -> System.out.println("攻撃力:" + j[0] + " コスト:" + j[1]));
-		List<Integer[]> add_s = sort2.collect(Collectors.toList());
+		add_s.forEach(j -> System.out.println("攻撃力:" + j[0] + " コスト:" + j[1]));
+//		List<Integer[]> add_s = sort2.collect(Collectors.toList());
 
 		int result = 0;
 		i = 0;
