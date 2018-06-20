@@ -2,6 +2,7 @@ package codecheck;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class App {
 	public static void main(String[] args) {
@@ -9,9 +10,10 @@ public class App {
 		int cards = Integer.parseInt(argv[0]); // カード枚数
 		int cost = Integer.parseInt(argv[1]); // コスト
 
-		List<String> attack = new ArrayList<String>();
-		List<String> requiredCost = new ArrayList<String>();
-		System.out.println(argv.length);
+		List<String> attack = new ArrayList<>();
+		List<String> requiredCost = new ArrayList<>();
+
+		List<Integer[]> add = new ArrayList<>();
 
 //		for (int i = 0, l = argv.length; i < l; i++) {
 //			String output = String.format("argv[%s]: %s", i, argv[i]);
@@ -24,9 +26,14 @@ public class App {
 			if (now_cost <= cost) { // コスト以下のものを配列に格納
 				attack.add(argv[i]);
 				requiredCost.add(argv[i + 1]);
+				add.add(new Integer[]{Integer.parseInt(argv[i]),Integer.parseInt(argv[i+1])});
 				i += 2;
 			}
 		}
+
+		Stream<Integer[]> sort2 = add.stream()
+		        .sorted((a, b) -> b[0].compareTo(a[0]));
+
 
 		// コスト以下で最大の攻撃力のものを先頭に並べ替える
 		boolean change = true;
@@ -49,9 +56,10 @@ public class App {
 
 		// 先頭からコストを満たす分だけ取得する
 		for (i = 0 ; i < attack.size(); i++) {
-			System.out.println("攻撃力" + attack.get(i));
-			System.out.println("コスト" + requiredCost.get(i));
+//			System.out.println("攻撃力" + attack.get(i));
+//			System.out.println("コスト" + requiredCost.get(i));
 
 		}
+		sort2.forEach(j -> System.out.println("攻撃力:"+j[0]+" コスト:"+j[1]));
 	}
 }
