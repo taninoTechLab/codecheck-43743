@@ -6,8 +6,10 @@ import java.util.List;
 public class App {
 	public static void main(String[] args) {
 
-		int cards = Integer.parseInt(args[0]); // カード枚数
-		int cost = Integer.parseInt(args[1]); // コスト
+//		int cards = Integer.parseInt(args[0]); // カード枚数
+//		int cost = Integer.parseInt(args[1]); // コスト
+		String cards = args[0];
+		String req_cost = args[1];
 		List<String> attack = new ArrayList<String>();
 		List<String> requiredCost = new ArrayList<String>();
 
