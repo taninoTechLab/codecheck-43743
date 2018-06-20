@@ -14,7 +14,7 @@ public class App {
 		int i = 2;
 		while (i < argv.length) {
 			int now_cost = Integer.parseInt(argv[i + 1]);
-			if (now_cost <= cost) { // コスト以下のものを配列に格納
+			if (now_cost <= cost) { // コスト以下のものを格納
 				add.add(new Integer[] { Integer.parseInt(argv[i]), Integer.parseInt(argv[i + 1]) });
 				i += 2;
 			}
