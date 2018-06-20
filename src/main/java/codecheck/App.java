@@ -22,7 +22,7 @@ public class App {
 		while (i < argv.length) {
 			int now_cost = Integer.parseInt(argv[i + 1]);
 			if (now_cost <= cost) { // コスト以下のものを配列に格納
-				String[] add = new String[1];
+				String[] add = new String[2];
 				add[0] = argv[i];
 				add[1] = argv[i+1];
 				status.add(add);
