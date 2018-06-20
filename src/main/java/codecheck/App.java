@@ -33,7 +33,11 @@ public class App {
 				cost -= add_s.get(i)[1].intValue();
 				cards--;
 			}
-			i++;
+			if(i == add_s.size()) {
+				break;
+			} else {
+				i++;
+			}
 		}
 		System.out.println(result);
 
