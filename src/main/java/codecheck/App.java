@@ -1,7 +1,6 @@
 package codecheck;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class App {
@@ -10,7 +9,8 @@ public class App {
 		int cards = Integer.parseInt(argv[0]); // カード枚数
 		int cost = Integer.parseInt(argv[1]); // コスト
 
-		List<String[]> status = new ArrayList<String[]>(); //[0]:attack [1]:cost
+		List<String> attack = new ArrayList<String>();
+		List<String> requiredCost = new ArrayList<String>();
 		System.out.println(argv.length);
 
 //		for (int i = 0, l = argv.length; i < l; i++) {
@@ -22,21 +22,35 @@ public class App {
 		while (i < argv.length) {
 			int now_cost = Integer.parseInt(argv[i + 1]);
 			if (now_cost <= cost) { // コスト以下のものを配列に格納
-				String[] add = new String[2];
-				add[0] = argv[i];
-				add[1] = argv[i+1];
-				status.add(add);
+				attack.add(argv[i]);
+				requiredCost.add(argv[i + 1]);
 				i += 2;
 			}
 		}
 
 		// コスト以下で最大の攻撃力のものを先頭に並べ替える
-		Collections.sort(status, Collections.reverseOrder());
+		boolean change = true;
+		i = 0;
+		while(change) {
+			if(Integer.parseInt(attack.get(0)) <= Integer.parseInt(attack.get(i+1))) {
+				String max_attack = attack.get(i+1);
+				attack.remove(i+1);
+				attack.add(0, max_attack);
+
+				String max_cost = requiredCost.get(i+1);
+				requiredCost.remove(i+1);
+				requiredCost.add(0, max_cost);
+				i++;
+			} else {
+				change = false;
+			}
+		}
+
 
 		// 先頭からコストを満たす分だけ取得する
-		for (i = 0 ; i < status.size(); i++) {
-			System.out.println("攻撃力" + status.get(i)[0]);
-			System.out.println("コスト" + status.get(i)[1]);
+		for (i = 0 ; i < attack.size(); i++) {
+			System.out.println("攻撃力" + attack.get(i));
+			System.out.println("コスト" + requiredCost.get(i));
 
 		}
 	}
