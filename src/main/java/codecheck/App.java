@@ -36,30 +36,32 @@ public class App {
 
 
 		// コスト以下で最大の攻撃力のものを先頭に並べ替える
-		boolean change = true;
-		i = 0;
-		while(change) {
-			if(Integer.parseInt(attack.get(0)) <= Integer.parseInt(attack.get(i+1))) {
-				String max_attack = attack.get(i+1);
-				attack.remove(i+1);
-				attack.add(0, max_attack);
+//		boolean change = true;
+//		i = 0;
+//		while(change) {
+//			if(Integer.parseInt(attack.get(0)) <= Integer.parseInt(attack.get(i+1))) {
+//				String max_attack = attack.get(i+1);
+//				attack.remove(i+1);
+//				attack.add(0, max_attack);
+//
+//				String max_cost = requiredCost.get(i+1);
+//				requiredCost.remove(i+1);
+//				requiredCost.add(0, max_cost);
+//				i++;
+//			} else {
+//				change = false;
+//			}
+//		}
 
-				String max_cost = requiredCost.get(i+1);
-				requiredCost.remove(i+1);
-				requiredCost.add(0, max_cost);
-				i++;
-			} else {
-				change = false;
-			}
-		}
 
+//		// 先頭からコストを満たす分だけ取得する
+//		for (i = 0 ; i < attack.size(); i++) {
+////			System.out.println("攻撃力" + attack.get(i));
+////			System.out.println("コスト" + requiredCost.get(i));
+//
+//		}
+//		sort2.forEach(j -> System.out.println("攻撃力:"+j[0]+" コスト:"+j[1]));
+		add.forEach(j -> System.out.println("攻撃力:"+j[0]+" コスト:"+j[1]));
 
-		// 先頭からコストを満たす分だけ取得する
-		for (i = 0 ; i < attack.size(); i++) {
-//			System.out.println("攻撃力" + attack.get(i));
-//			System.out.println("コスト" + requiredCost.get(i));
-
-		}
-		sort2.forEach(j -> System.out.println("攻撃力:"+j[0]+" コスト:"+j[1]));
 	}
 }
