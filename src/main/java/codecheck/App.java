@@ -13,19 +13,17 @@ public class App {
 		List<String> requiredCost = new ArrayList<String>();
 		System.out.println(argv.length);
 
-		for (int i = 0, l = argv.length; i < l; i++) {
-			String output = String.format("argv[%s]: %s", i, argv[i]);
-			System.out.println(output);
-		}
+//		for (int i = 0, l = argv.length; i < l; i++) {
+//			String output = String.format("argv[%s]: %s", i, argv[i]);
+//			System.out.println(output);
+//		}
 
 		int i = 2;
 		while (i < argv.length) {
 			int now_cost = Integer.parseInt(argv[i + 1]);
 			if (now_cost <= cost) { // コスト以下のものを配列に格納
 				attack.add(argv[i]);
-				System.out.println(" 攻撃力" + argv[i]);
 				requiredCost.add(argv[i + 1]);
-				System.out.println(" コスト" + argv[i + 1]);
 				i += 2;
 			}
 		}
@@ -34,7 +32,7 @@ public class App {
 		boolean change = true;
 		i = 0;
 		while(change) {
-			if(Integer.parseInt(attack.get(0)) < Integer.parseInt(attack.get(i+1))) {
+			if(Integer.parseInt(attack.get(0)) <= Integer.parseInt(attack.get(i+1))) {
 				String now_attack = attack.get(i+1);
 				attack.remove(i+1);
 				attack.set(0, now_attack);
