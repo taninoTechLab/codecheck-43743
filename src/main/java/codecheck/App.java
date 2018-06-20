@@ -23,21 +23,20 @@ public class App {
 		List<Integer[]> add_s = add.stream()
 				.sorted((a, b) -> b[0].compareTo(a[0])).collect(Collectors.toList());
 
-//		add_s.forEach(j -> System.out.println("攻撃力:" + j[0] + " コスト:" + j[1]));
+		//		add_s.forEach(j -> System.out.println("攻撃力:" + j[0] + " コスト:" + j[1]));
 
 		int result = 0;
 		i = 0;
-		while(cards > 0) {
+		while (cards > 0) {
+			if (add_s.size() == i) {
+				break;
+			}
 			if (cost >= add_s.get(i)[1].intValue()) {
 				result += add_s.get(i)[0].intValue();
 				cost -= add_s.get(i)[1].intValue();
 				cards--;
 			}
-			if(add_s.size() < i) {
-				break;
-			} else {
-				i++;
-			}
+			i++;
 		}
 		System.out.println(result);
 
