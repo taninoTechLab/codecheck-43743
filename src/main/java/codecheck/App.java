@@ -5,13 +5,14 @@ import java.util.List;
 
 public class App {
 	public static void main(String[] args) {
-		String cards = args[0];
-		String req_cost = args[1];
+//		String cards = args[0];
+//		String req_cost = args[1];
 //		int cards = Integer.parseInt(args[0]); // カード枚数
 //		int cost = Integer.parseInt(args[1]); // コスト
 
 		List<String> attack = new ArrayList<String>();
 		List<String> requiredCost = new ArrayList<String>();
+		System.out.println(args.length);
 
 		for (int i = 0, l = args.length; i < l; i++) {
 			String output = String.format("argv[%s]: %s", i, args[i]);
