@@ -41,11 +41,12 @@ public class App {
 		int result = 0;
 		i = 0;
 		while(cards > 0) {
-			if (cost > add_s.get(i)[1].intValue()) {
+			if (cost >= add_s.get(i)[1].intValue()) {
 				result += add_s.get(i)[0].intValue();
 				cost -= add_s.get(i)[1].intValue();
-				i++;
+				cards--;
 			}
+			i++;
 		}
 		System.out.println(result);
 
