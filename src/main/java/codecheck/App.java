@@ -17,7 +17,9 @@ public class App {
 			i += 2;
 		}
 
-		List<Integer[]> add_s = add.stream()
+		List<Integer[]> add_b = add.stream()
+				.sorted((a, b) -> b[1]).collect(Collectors.toList());
+		List<Integer[]> add_s = add_b.stream()
 				.sorted((a, b) -> b[0].compareTo(a[0])).collect(Collectors.toList());
 
 		//		add_s.forEach(j -> System.out.println("攻撃力:" + j[0] + " コスト:" + j[1]));
